@@ -2,11 +2,11 @@ import React from "react";
 
 export default function ProfileCard() {
   return (
-    <div className="w-full p-2 bg-slate-900 rounded-md text-white flex gap-3 items-center">
+    <div className="w-full p-2 bg-slate-900 rounded-md text-white flex gap-3 items-center md:rounded-lg">
       <img
         src="https://avatars.githubusercontent.com/u/9919?v=4"
         alt="profile avatar"
-        className="w-15 rounded-md"
+        className="w-15 rounded-md md:rounded-lg"
       />
       <div className="flex flex-col">
         <h2 className="text-lg">Github</h2>
