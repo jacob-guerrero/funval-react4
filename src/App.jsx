@@ -12,7 +12,7 @@ function App() {
         </div>
       </header>
 
-      <main className="w-full p-2 min-h-[50vh] bg-gray-700 flex flex-col items-center md:min-h-[65vh] relative">
+      <main className="w-full p-2 min-h-[50vh] bg-gray-700 flex flex-col gap-4 items-center md:min-h-[65vh] relative">
         <div className="w-full max-w-3xl relative">
           <picture className="bg-gray-700 p-2 absolute top-0 left-[50%] transform -translate-x-[50%] -translate-y-[50%] rounded-xl lg:left-0 ">
             <img
@@ -22,12 +22,24 @@ function App() {
             />
           </picture>
 
-          <ul className="w-full gap-2 mt-15 flex flex-wrap md:justify-center lg:mt-0 lg:ml-4 lg:gap-3">
+          <div className="w-full text-white order-1 mt-12 text-center lg:hidden">
+            <h2 className="text-3xl font-semibold">Github</h2>
+            <p className="text-gray-300">How people build software</p>
+          </div>
+
+          <ul className="w-full gap-2 mt-5 flex flex-wrap md:justify-center lg:mt-0 lg:ml-4 lg:gap-3">
             <InfoTags title={"Followers"} info={27839} />
             <InfoTags title={"Following"} info={0} />
             <InfoTags title={"Location"} info={"San Francisco, CA"} />
           </ul>
         </div>
+
+        <div className="w-full max-w-4xl text-white hidden lg:block">
+          <h2 className="text-3xl font-semibold">Github</h2>
+          <p className="text-gray-300">How people build software</p>
+        </div>
+
+        <div className="w-full max-w-4xl text-white"></div>
       </main>
     </>
   );
