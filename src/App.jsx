@@ -1,5 +1,6 @@
 import InfoTags from "./components/InfoTags";
 import ProfileCard from "./components/ProfileCard";
+import RepoCard from "./components/RepoCard";
 import SearchInput from "./components/SearchInput";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
         </div>
       </header>
 
-      <main className="w-full p-2 min-h-[50vh] bg-gray-700 flex flex-col gap-4 items-center md:min-h-[65vh] relative">
+      <main className="w-full p-2 min-h-[50vh] bg-gray-700 flex flex-col gap-4 items-center md:min-h-[65vh] relative md:gap-8">
         <div className="w-full max-w-3xl relative">
           <picture className="bg-gray-700 p-2 absolute top-0 left-[50%] transform -translate-x-[50%] -translate-y-[50%] rounded-xl lg:left-0 ">
             <img
@@ -39,7 +40,13 @@ function App() {
           <p className="text-gray-300">How people build software</p>
         </div>
 
-        <div className="w-full max-w-4xl text-white"></div>
+        <div className="w-full max-w-4xl text-white grid grid-cols-[repeat(auto-fill,minmax(290px,1fr))] gap-2 md:gap-5">
+          <RepoCard />
+          <RepoCard />
+          <RepoCard />
+        </div>
+
+        <p className="text-white p-2 my-4">View all repositories</p>
       </main>
     </>
   );
