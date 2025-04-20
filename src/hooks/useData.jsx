@@ -8,6 +8,7 @@ export default function useData(url) {
 
   async function getData(url) {
     setLoading(true);
+    setError("");
     try {
       const { data } = await axios.get(url);
       setResponse(data);
