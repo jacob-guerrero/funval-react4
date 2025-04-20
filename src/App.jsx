@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import InfoTags from "./components/InfoTags";
 import ProfileCard from "./components/ProfileCard";
 import RepoCard from "./components/RepoCard";
 import SearchInput from "./components/SearchInput";
@@ -7,13 +6,24 @@ import useData from "./hooks/useData";
 import InfoTop from "./components/InfoTop";
 
 function App() {
-  const { response: data } = useData("https://api.github.com/users/github");
+  const [search, setSearch] = useState("github");
+  const { response: data } = useData(`https://api.github.com/users/${search}`);
   const { response: dataRepos } = useData(
-    "https://api.github.com/users/github/repos"
+    `https://api.github.com/users/${search}/repos`
   );
 
   const [profile, setProfile] = useState({});
   const [repos, setRepos] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const searchInput = formData.get("search").trim();
+    if (searchInput) {
+      setSearch(searchInput);
+    }
+  };
+  console.log(profile, repos);
 
   useEffect(() => {
     setProfile(data);
@@ -24,7 +34,7 @@ function App() {
     <>
       <header className="w-full p-2 min-h-[50vh] bg-[url(/img/space.jpg)] bg-cover bg-center flex flex-col justify-center items-center md:min-h-[35vh]">
         <div className="w-full max-w-sm flex flex-col gap-4 md:gap-2">
-          <SearchInput />
+          <SearchInput handleSubmit={handleSubmit} />
           {profile && <ProfileCard profile={profile} />}
         </div>
       </header>
