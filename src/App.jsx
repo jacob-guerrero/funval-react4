@@ -29,7 +29,7 @@ function App() {
   };
 
   const [numViewRepos, setNumViewRepos] = useState(4);
-  const handleClickViewAll = (e) => {
+  const handleClickViewAll = () => {
     setNumViewRepos(repos.length);
   };
 
@@ -68,7 +68,7 @@ function App() {
         </div>
 
         {!loading && !error && repos && numViewRepos < repos.length && (
-          <p className="text-white p-2 my-4" onClick={handleClickViewAll}>
+          <p className="text-white p-2 my-4 cursor-pointer" onClick={handleClickViewAll}>
             View all repositories
           </p>
         )}
