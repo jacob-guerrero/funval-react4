@@ -27,7 +27,11 @@ function App() {
       setSearch(searchInput);
     }
   };
-  console.log(profile)
+
+  const [numViewRepos, setNumViewRepos] = useState(4);
+  const handleClickViewAll = (e) => {
+    setNumViewRepos(repos.length);
+  };
 
   useEffect(() => {
     setProfile(data);
@@ -43,7 +47,7 @@ function App() {
         </div>
       </header>
 
-      <main className="w-full p-2 min-h-[50vh] bg-gray-700 flex flex-col gap-4 items-center md:min-h-[65vh] relative md:gap-8">
+      <main className="w-full p-2 pb-6 min-h-[50vh] bg-gray-700 flex flex-col gap-4 items-center md:min-h-[65vh] relative md:gap-8">
         {loading ? "" : error ? "" : profile && <InfoTop profile={profile} />}
 
         <div className="w-full max-w-4xl text-white grid grid-cols-[repeat(auto-fill,minmax(290px,1fr))] gap-2 md:gap-5">
@@ -58,18 +62,16 @@ function App() {
           ) : (
             repos &&
             repos
-              .slice(0, 4)
+              .slice(0, numViewRepos)
               .map((repo) => <RepoCard repo={repo} key={repo.id} />)
           )}
         </div>
 
-        {loading
-          ? ""
-          : error
-          ? ""
-          : repos && (
-              <p className="text-white p-2 my-4">View all repositories</p>
-            )}
+        {!loading && !error && repos && numViewRepos < repos.length && (
+          <p className="text-white p-2 my-4" onClick={handleClickViewAll}>
+            View all repositories
+          </p>
+        )}
       </main>
     </>
   );
